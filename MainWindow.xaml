@@ -98,6 +98,31 @@
 
             <Label Grid.Row="0" Grid.Column="0" Content="Location Information" Background="FloralWhite"/>
             
+            <Grid Grid.Row="0" Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Text="{Binding CurrentLocation.Name}"/>
+
+                <Image Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Height="125"
+                       Width="125"
+                       Source = "{Binding CurrentLocation.ImageName}"/>
+
+                <TextBlock Grid.Row="2"
+                           HorizontalAlignment="Center"
+                           Text = "{Binding CurrentLocation.Description}"/>
+
+            </Grid>
+
             <Label Grid.Row="2" Grid.Column="0" Content="Enemy Information" Background="FloralWhite"/>
         </Grid>
         
