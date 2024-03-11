@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CC3_1N_GYMRAT"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -33,12 +34,43 @@
             <Label Grid.Row="0" Grid.Column="0" Content="Player Information" Background="FloralWhite"/>
             <Label Grid.Row="2" Grid.Column="0" Content="Player Image" Background="FloralWhite"/>
 
-        </Grid>
+        </Grid>        
 
         <Label Grid.Row="2" Grid.Column="0" Content="Inventory and Quests" Background="SaddleBrown"/>
         <Label Grid.Row="1" Grid.Column="1" Content="Game Messages" Background="Beige"/>
-        <Label Grid.Row="2" Grid.Column="1" Content="Combat" Background="RosyBrown"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Combat or Item" Background="RosyBrown"/>
+        
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Item Information" Background="RosyBrown"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Item Buttons" Background="RosyBrown"/>
+        </Grid>
+        
         <Label Grid.Row="1" Grid.Column="2" Content="Location and Enemy" Background="FloralWhite"/>
-        <Label Grid.Row="2" Grid.Column="2" Content="Location and Enemy" Background="SaddleBrown"/>
+        
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Location Information" Background="FloralWhite"/>
+            
+            <Label Grid.Row="2" Grid.Column="0" Content="Enemy Information" Background="FloralWhite"/>
+        </Grid>
+        
+        <Label Grid.Row="2" Grid.Column="2" Content="Navigation Buttons" Background="SaddleBrown"/>
+        
     </Grid>
 </Window>
