@@ -23,6 +23,7 @@
         <Label Grid.Row="0" Grid.Column="0" Content="Menu" Background="Beige" Grid.ColumnSpan="3"/>
 
         <Grid Grid.Row="1" Grid.Column="0">
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -31,8 +32,36 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Content="Player Information" Background="FloralWhite"/>
-            <Label Grid.Row="2" Grid.Column="0" Content="Player Image" Background="FloralWhite"/>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Name" Background="FloralWhite"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}" Background="FloralWhite"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Class" Background="FloralWhite"/>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}" Background="FloralWhite"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Hit-Points" Background="FloralWhite"/>
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HitPoints}" Background="FloralWhite"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Gold:" Background="FloralWhite"/>
+                <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}" Background="FloralWhite"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Experience" Background="FloralWhite"/>
+                <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}" Background="FloralWhite"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="Level" Background="FloralWhite"/>
+                <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Level}" Background="FloralWhite"/>
+
+            </Grid>
 
         </Grid>        
 
