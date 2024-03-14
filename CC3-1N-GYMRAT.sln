@@ -5,7 +5,11 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CC3-1N-GYMRAT", "CC3-1N-GYMRAT.csproj", "{54444030-099C-493D-9E8E-ED12B944D631}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{2E555950-C038-499A-A670-7CF4EADFB478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csproj", "{2E555950-C038-499A-A670-7CF4EADFB478}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{04BF680E-BF39-4966-9C44-4867194393CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "background", "background", "{6B994BCA-CFC5-403D-A9BB-C4AF1B1BA41A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B994BCA-CFC5-403D-A9BB-C4AF1B1BA41A} = {04BF680E-BF39-4966-9C44-4867194393CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D616579-F83D-4285-A7BF-6E5157BC2A5C}
