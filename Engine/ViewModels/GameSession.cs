@@ -21,11 +21,12 @@ namespace Engine.ViewModels
             {
                 _currentLocation = value;
 
-                OnPropertyChanged("CurrentLocation");
-                OnPropertyChanged("HasLocationToNorth");
-                OnPropertyChanged("HasLocationToEast");
-                OnPropertyChanged("HasLocationToWest");
-                OnPropertyChanged("HasLocationToSouth");
+                OnPropertyChanged(nameof(CurrentLocation));
+                OnPropertyChanged(nameof(HasLocationToNorth));
+                OnPropertyChanged(nameof(HasLocationToEast));
+                OnPropertyChanged(nameof(HasLocationToWest));
+                OnPropertyChanged(nameof(HasLocationToSouth));
+
             }
         }
         public World CurrentWorld { get; set; }
@@ -59,16 +60,16 @@ namespace Engine.ViewModels
         }
         public GameSession()
         {
-            CurrentPlayer = new Player();
-            CurrentPlayer.Name = "Nymph";
-            CurrentPlayer.CharacterClass = "Dryad";
-            CurrentPlayer.HitPoints = 10;
-            CurrentPlayer.Gold = 10;
-            CurrentPlayer.ExperiencePoints = 10;
-            CurrentPlayer.Level = 1;
+            CurrentPlayer = new Player
+            { 
+                Name = "Nymph", 
+                CharacterClass = "Dryad", 
+                ExperiencePoints = 0, 
+                Gold = 0, HitPoints = 20, 
+                Level = 1 
+            };
 
-            WorldFactory worldFactory = new WorldFactory();
-            CurrentWorld = worldFactory.CreateWorld();
+            CurrentWorld = WorldFactory.CreateWorld();
 
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }

@@ -9,7 +9,7 @@ namespace Engine.Factories
 {
     internal class WorldFactory
     {
-        public World CreateWorld()
+        public static World CreateWorld()
         {
             World newWorld = new World();
             newWorld.AddLocation(0, 0, "Oracle's Refuge", "This is the place where you will be guided by a spirit.", "/Engine;component/Images/Locations/OracleCastle.jpg");
