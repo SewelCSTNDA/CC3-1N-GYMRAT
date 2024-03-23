@@ -119,6 +119,7 @@
 
                 <TextBlock Grid.Row="2"
                            HorizontalAlignment="Center"
+                           TextWrapping="Wrap"
                            Text = "{Binding CurrentLocation.Description}"/>
 
             </Grid>

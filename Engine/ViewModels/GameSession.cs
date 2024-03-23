@@ -1,4 +1,5 @@
-﻿using Engine.Models;
+﻿using Engine.Factories;
+using Engine.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Engine.ViewModels
     {
         public Player CurrentPlayer { get; set; }
         public Location CurrentLocation { get; set; }
+        public World CurrentWorld { get; set; }
         public GameSession()
         {
             CurrentPlayer = new Player();
@@ -22,12 +24,10 @@ namespace Engine.ViewModels
             CurrentPlayer.ExperiencePoints = 10;
             CurrentPlayer.Level = 1;
 
-            CurrentLocation = new Location();
-            CurrentLocation.XCoordinate = 0;
-            CurrentLocation.YCoordinate = 0;
-            CurrentLocation.Name = "Town Hall";
-            CurrentLocation.Description = "Your Home";
-            CurrentLocation.ImageName = "pack://application:,,,/Engine;component/Images/Locations/Home.png";
+            WorldFactory worldFactory = new WorldFactory();
+            CurrentWorld = worldFactory.CreateWorld();
+
+            CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
     }
 }

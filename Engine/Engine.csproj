@@ -7,11 +7,49 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Locations\AuronThrone.jpg" />
+    <None Remove="Images\Locations\Castle1.jpg" />
+    <None Remove="Images\Locations\Castle2.jpg" />
+    <None Remove="Images\Locations\DarkForest1.jpg" />
+    <None Remove="Images\Locations\DarkForest2.jpg" />
+    <None Remove="Images\Locations\DarkForest3.jpg" />
+    <None Remove="Images\Locations\DarkForest4.jpg" />
+    <None Remove="Images\Locations\DarkForest5.jpg" />
+    <None Remove="Images\Locations\EasterEgg.png" />
+    <None Remove="Images\Locations\Forest.jpg" />
+    <None Remove="Images\Locations\GoblinLair.png" />
+    <None Remove="Images\Locations\GrassField1.jpg" />
+    <None Remove="Images\Locations\GrassField2.jpg" />
+    <None Remove="Images\Locations\GrassField3.jpg" />
     <None Remove="Images\Locations\Home.png" />
+    <None Remove="Images\Locations\OracleCastle.jpg" />
+    <None Remove="Images\Locations\SolinGuard.jpg" />
+    <None Remove="Images\Locations\VexenRaid.jpg" />
+    <None Remove="Images\Locations\Village1.jpg" />
+    <None Remove="Images\Locations\VIllage2.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Locations\AuronThrone.jpg" />
+    <Resource Include="Images\Locations\Castle1.jpg" />
+    <Resource Include="Images\Locations\Castle2.jpg" />
+    <Resource Include="Images\Locations\DarkForest1.jpg" />
+    <Resource Include="Images\Locations\DarkForest2.jpg" />
+    <Resource Include="Images\Locations\DarkForest3.jpg" />
+    <Resource Include="Images\Locations\DarkForest4.jpg" />
+    <Resource Include="Images\Locations\DarkForest5.jpg" />
+    <Resource Include="Images\Locations\EasterEgg.png" />
+    <Resource Include="Images\Locations\Forest.jpg" />
+    <Resource Include="Images\Locations\GoblinLair.png" />
+    <Resource Include="Images\Locations\GrassField1.jpg" />
+    <Resource Include="Images\Locations\GrassField2.jpg" />
+    <Resource Include="Images\Locations\GrassField3.jpg" />
     <Resource Include="Images\Locations\Home.png" />
+    <Resource Include="Images\Locations\OracleCastle.jpg" />
+    <Resource Include="Images\Locations\SolinGuard.jpg" />
+    <Resource Include="Images\Locations\VexenRaid.jpg" />
+    <Resource Include="Images\Locations\Village1.jpg" />
+    <Resource Include="Images\Locations\VIllage2.jpg" />
   </ItemGroup>
 
 </Project>
