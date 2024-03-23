@@ -69,9 +69,29 @@
                 
             </Grid>
 
-        </Grid>        
+        </Grid>
 
-        <Label Grid.Row="2" Grid.Column="0" Content="Inventory and Quests" Background="SaddleBrown"/>
+        <Grid Grid.Row="2" Grid.Column="0"
+              Background="SaddleBrown">
+
+            <TabControl>
+                <TabItem Header="Inventory">
+                    <DataGrid ItemsSource="{Binding CurrentPlayer.Inventory}"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Description"
+                                                Binding="{Binding Name}"
+                                                Width="*"/>                            
+                            <DataGridTextColumn Header="Price"
+                                                Binding="{Binding Price}"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        
         <Label Grid.Row="1" Grid.Column="1" Content="Game Messages" Background="Beige"/>
         <Label Grid.Row="2" Grid.Column="1" Content="Combat or Item" Background="RosyBrown"/>
         

@@ -17,6 +17,8 @@ namespace Engine.Factories
 
             _standardGameItems.Add(new Weapon(001, "Blunt Sword", 10, 4, 6));
             _standardGameItems.Add(new Weapon(002, "Iron Sword", 50, 10, 12));
+            _standardGameItems.Add(new GameItem(101, "Stick", 1));
+            _standardGameItems.Add(new GameItem(102, "Stone", 1));
         }
 
         public static GameItem CreateGameItem(int itemTypeId)
