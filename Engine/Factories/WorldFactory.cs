@@ -13,6 +13,7 @@ namespace Engine.Factories
         {
             World newWorld = new World();
             newWorld.AddLocation(0, 0, "Oracle's Refuge", "This is the place where you will be guided by a spirit.", "/Engine;component/Images/Locations/OracleCastle.jpg");
+            newWorld.LocationAt(0, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));               
             newWorld.AddLocation(1, 0, "Slime Field", "This area full of harmful slimes.", "/Engine;component/Images/Locations/GrassField1.jpg");
             newWorld.AddLocation(1, -1, "Village of Whispering Pines", "This place is full of villagers where you can get cool items.", "/Engine;component/Images/Locations/Village1.jpg");
             newWorld.AddLocation(1, -2, "Cryztalize Mineshaft", "This area is full of crystals and crystalized enemy", "/Engine;component/Images/Locations/CrystalMS.jpg");

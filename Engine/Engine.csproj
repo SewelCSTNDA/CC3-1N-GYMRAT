@@ -27,6 +27,12 @@
     <None Remove="Images\Locations\VexenRaid.jpg" />
     <None Remove="Images\Locations\Village1.jpg" />
     <None Remove="Images\Locations\VIllage2.jpg" />
+    <None Remove="Images\Monsters\BIGBOY.png" />
+    <None Remove="Images\Monsters\Crystal Slime.png" />
+    <None Remove="Images\Monsters\Juggernaut.png" />
+    <None Remove="Images\Monsters\Orc.png" />
+    <None Remove="Images\Monsters\Slime.png" />
+    <None Remove="Images\Monsters\Spartan.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +56,12 @@
     <Resource Include="Images\Locations\VexenRaid.jpg" />
     <Resource Include="Images\Locations\Village1.jpg" />
     <Resource Include="Images\Locations\VIllage2.jpg" />
+    <Resource Include="Images\Monsters\BIGBOY.png" />
+    <Resource Include="Images\Monsters\Crystal Slime.png" />
+    <Resource Include="Images\Monsters\Juggernaut.png" />
+    <Resource Include="Images\Monsters\Orc.png" />
+    <Resource Include="Images\Monsters\Slime.png" />
+    <Resource Include="Images\Monsters\Spartan.png" />
   </ItemGroup>
 
 </Project>
