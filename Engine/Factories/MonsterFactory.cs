@@ -24,7 +24,7 @@ namespace Engine.Factories
 
                 case 2:
 
-                    Monster cslime = new Monster("Crystal Slime", "Rat.png", 5, 5, 5, 1);
+                    Monster cslime = new Monster("Crystal Slime", "Crystal Slime.png", 5, 5, 5, 1);
 
                     AddLootItem(cslime, 103, 25);
                     AddLootItem(cslime, 104, 75);
@@ -33,7 +33,7 @@ namespace Engine.Factories
                     
                 case 3:
 
-                    Monster goblin = new Monster("Crystal Slime", "Rat.png", 10, 10, 10, 3);
+                    Monster goblin = new Monster("Goblin", "Orc.png", 10, 10, 10, 3);
 
                     AddLootItem(goblin, 101, 25);
                     AddLootItem(goblin, 102, 75);

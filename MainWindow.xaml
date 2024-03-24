@@ -4,7 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CC3_1N_GYMRAT"
+        xmlns:viewModels="clr-namespace:Engine.ViewModels;assembly=Engine"
+        d:DataContext="{d:DesignInstance viewModels:GameSession}"
         mc:Ignorable="d"
+        FontSize="11pt"
         Title="MainWindow" Height="450" Width="800">
 
     <Window.Resources>
@@ -16,25 +19,29 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="225"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
+        <!-- MENU -->
         <Label Grid.Row="0" Grid.Column="0" Content="Menu" Background="Beige" Grid.ColumnSpan="3"/>
 
+        <!-- PLAYER STATISTICS -->
         <Grid Grid.Row="1" Grid.Column="0">
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-        
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+
 
             <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.RowDefinitions>
@@ -44,8 +51,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    
-                    
+
+
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -65,15 +72,17 @@
                 <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}" Background="FloralWhite"/>
                 <Label Grid.Row="5" Grid.Column="0" Content="Level" Background="FloralWhite"/>
                 <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Level}" Background="FloralWhite"/>
-            
-                
+
+
             </Grid>
 
         </Grid>
 
+        <!-- GAMEPLAY -->
         <Grid Grid.Row="2" Grid.Column="0"
               Background="SaddleBrown">
 
+            <!-- Inventory and Quest -->
             <TabControl>
                 <TabItem Header="Inventory">
                     <DataGrid ItemsSource="{Binding CurrentPlayer.Inventory}"
@@ -82,7 +91,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Description"
                                                 Binding="{Binding Name}"
-                                                Width="*"/>                            
+                                                Width="*"/>
                             <DataGridTextColumn Header="Price"
                                                 Binding="{Binding Price}"
                                                 Width="Auto"/>
@@ -106,10 +115,29 @@
                 </TabItem>
             </TabControl>
         </Grid>
-        
-        <Label Grid.Row="1" Grid.Column="1" Content="Game Messages" Background="Beige"/>
+
+
+
+        <Label Grid.Row="0" Grid.Column="1" Content="Game Messages" Background="Beige"/>
+
+        <Border Grid.Row="1" Grid.Column="1"
+                    Grid.RowSpan="1"
+                    BorderBrush="Gainsboro"
+                    BorderThickness="1">
+            <RichTextBox x:Name="GameMessages"
+                             Background="Beige"
+                             VerticalScrollBarVisibility="Auto">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+
+        </Border>
+
         <Label Grid.Row="2" Grid.Column="1" Content="Combat or Item" Background="RosyBrown"/>
-        
+
         <Grid Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -122,9 +150,10 @@
             <Label Grid.Row="0" Grid.Column="0" Content="Item Information" Background="RosyBrown"/>
             <Label Grid.Row="0" Grid.Column="1" Content="Item Buttons" Background="RosyBrown"/>
         </Grid>
-        
+
         <Label Grid.Row="1" Grid.Column="2" Content="Location and Enemy" Background="FloralWhite"/>
-        
+
+        <!-- LOCATION INFORMATION -->
         <Grid Grid.Row="1" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -136,36 +165,72 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Content="Location Information" Background="FloralWhite"/>
-            
-            <Grid Grid.Row="0" Grid.Column="0">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="1"
+                BorderBrush="Gainsboro"
+                BorderThickness="1">
 
-                <TextBlock Grid.Row="0"
+                <Grid Margin="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
                            HorizontalAlignment="Center"
                            Text="{Binding CurrentLocation.Name}"/>
 
-                <Image Grid.Row="1"
+                    <Image Grid.Row="1"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Height="125"
                        Width="125"
-                       Source = "{Binding CurrentLocation.ImageName}"/>
+                       Source="{Binding CurrentLocation.ImageName}"/>
 
-                <TextBlock Grid.Row="2"
+                    <TextBlock Grid.Row="2"
                            HorizontalAlignment="Center"
-                           TextWrapping="Wrap"
-                           Text = "{Binding CurrentLocation.Description}"/>
+                           Text="{Binding CurrentLocation.Description}"
+                           TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
 
-            </Grid>
-
+            <!-- MONSTER INFORMATION -->
             <Label Grid.Row="2" Grid.Column="0" Content="Enemy Information" Background="FloralWhite"/>
+            <Border Grid.Row="1" Grid.Column="1"
+                BorderBrush="Gainsboro"
+                BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Height="Auto"
+                           Text="{Binding CurrentMonster.Name}"/>
+
+                    <Image Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Height="125"
+                       Width="125"
+                       Source="{Binding CurrentMonster.ImageName}"/>
+
+                    <StackPanel Grid.Row="2"
+                            Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+
+                        <TextBlock>Current Hit Points:</TextBlock>
+                        <TextBlock Text="{Binding CurrentMonster.HitPoints}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
         </Grid>
-        
+
         <Label Grid.Row="2" Grid.Column="2" Content="Navigation Buttons" Background="SaddleBrown"/>
         <Grid Grid.Row="2" Grid.Column="2">
             <Grid.RowDefinitions>
@@ -186,3 +251,4 @@
         </Grid>
     </Grid>
 </Window>
+    

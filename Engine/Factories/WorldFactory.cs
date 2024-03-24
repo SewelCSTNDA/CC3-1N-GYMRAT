@@ -12,8 +12,12 @@ namespace Engine.Factories
         public static World CreateWorld()
         {
             World newWorld = new World();
+
+            /** Oracle's Refuge **/
             newWorld.AddLocation(0, 0, "Oracle's Refuge", "This is the place where you will be guided by a spirit.", "/Engine;component/Images/Locations/OracleCastle.jpg");
-            newWorld.LocationAt(0, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));               
+            newWorld.LocationAt(0, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));
+            newWorld.LocationAt(0, 0).AddMonster(1, 100);
+            
             newWorld.AddLocation(1, 0, "Slime Field", "This area full of harmful slimes.", "/Engine;component/Images/Locations/GrassField1.jpg");
             newWorld.AddLocation(1, -1, "Village of Whispering Pines", "This place is full of villagers where you can get cool items.", "/Engine;component/Images/Locations/Village1.jpg");
             newWorld.AddLocation(1, -2, "Cryztalize Mineshaft", "This area is full of crystals and crystalized enemy", "/Engine;component/Images/Locations/CrystalMS.jpg");
@@ -24,7 +28,11 @@ namespace Engine.Factories
             newWorld.AddLocation(3, -1, "Mist of Clouds", "This area is corrupting time by time.", "/Engine;component/Images/Locations/Forest.jpg");
             newWorld.AddLocation(3, 0, "Silverbrook", "A beautiful village where you can get strong.", "/Engine;component/Images/Locations/VIllage2.jpg");
             newWorld.AddLocation(3, 1, "Bombing shells", "This place used to be beautiful but now it is corrupted.", "/Engine;component/Images/Locations/DarkForest1.jpg");
+
+            /** Gromble's Lair **/
             newWorld.AddLocation(4, 1, "Gromble's Lair", "A place where Gromble's lives in.", "/Engine;component/Images/Locations/GoblinLair.png");
+            newWorld.LocationAt(4, 1).AddMonster(3, 100);
+
             newWorld.AddLocation(4, 0, "Bombing shells", "This place used to be beautiful but now it is corrupted.", "/Engine;component/Images/Locations/DarkForest2.jpg");
             newWorld.AddLocation(4, -1, "Solin's Palace", "A beautiful town where Solin's rules the place.", "/Engine;component/Images/Locations/SolinGuard.jpg");
             newWorld.AddLocation(5, -1, "Bombing shells", "This place used to be beautiful but now it is corrupted.", "/Engine;component/Images/Locations/DarkForest3.jpg");
