@@ -271,32 +271,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0"
-                  Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="50"/>
-                </Grid.ColumnDefinitions>
-
-                <ComboBox Grid.Row="0" Grid.Column="0"
-                          ItemsSource="{Binding CurrentPlayer.Weapons}"
-                          SelectedItem="{Binding CurrentWeapon}"
-                          DisplayMemberPath="Name"
-                          SelectedValuePath="ID"/>
-
-                <Button Grid.Row="0" Grid.Column="2"
-                        Content="Use"
-                        Click="OnClick_AttackMonster"/>
-            </Grid>
-
             <Button Grid.Row="0" Grid.Column="1" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToNorth, Converter={StaticResource BooleanToVisibility}}" Click="OnClick_MoveNorth" Content="North"/>
             <Button Grid.Row="1" Grid.Column="2" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToEast, Converter={StaticResource BooleanToVisibility}}" Click="OnClick_MoveEast" Content="East"/>
             <Button Grid.Row="1" Grid.Column="0" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToWest, Converter={StaticResource BooleanToVisibility}}" Click="OnClick_MoveWest" Content="West"/>

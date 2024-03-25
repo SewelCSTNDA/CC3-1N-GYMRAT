@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Engine.Models
 {
@@ -13,10 +15,10 @@ namespace Engine.Models
         {
             Location loc = new Location();
             loc.XCoordinate = x;
-            loc.YCoordinate = y; 
+            loc.YCoordinate = y;
             loc.Name = name;
             loc.Description = desc;
-            loc.ImageName = imageName;
+            loc.ImageName = $"/Engine;component/Images/Locations/{imageName}";
 
             _locations.Add(loc);
         }
