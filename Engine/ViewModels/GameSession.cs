@@ -34,7 +34,7 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
-                CompleteQuestsAtLocation();
+                CompleteQuestAtLocation();
                 GivePlayerQuestsAtLocation();
                 GetMonsterAtLocation();
             }
