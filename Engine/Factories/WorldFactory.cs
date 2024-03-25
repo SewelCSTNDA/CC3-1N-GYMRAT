@@ -15,10 +15,13 @@ namespace Engine.Factories
 
             /** Oracle's Refuge **/
             newWorld.AddLocation(0, 0, "Oracle's Refuge", "This is the place where you will be guided by a spirit.", "/Engine;component/Images/Locations/OracleCastle.jpg");
-            newWorld.LocationAt(0, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));
-            newWorld.LocationAt(0, 0).AddMonster(1, 100);
             
+            /** Slime Field**/
             newWorld.AddLocation(1, 0, "Slime Field", "This area full of harmful slimes.", "/Engine;component/Images/Locations/GrassField1.jpg");
+            newWorld.LocationAt(1, 0).QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));
+            newWorld.LocationAt(1, 0).AddMonster(1, 100);
+
+
             newWorld.AddLocation(1, -1, "Village of Whispering Pines", "This place is full of villagers where you can get cool items.", "/Engine;component/Images/Locations/Village1.jpg");
             newWorld.AddLocation(1, -2, "Cryztalize Mineshaft", "This area is full of crystals and crystalized enemy", "/Engine;component/Images/Locations/CrystalMS.jpg");
             newWorld.AddLocation(2, -1, "Grassfield", "This place is filled with human size grasses.", "/Engine;component/Images/Locations/GrassField2.jpg");

@@ -149,6 +149,31 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="Item Information" Background="RosyBrown"/>
             <Label Grid.Row="0" Grid.Column="1" Content="Item Buttons" Background="RosyBrown"/>
+            <Grid Grid.Row="0" Grid.Column="1"
+                  Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox Grid.Row="0" Grid.Column="0"
+                          ItemsSource="{Binding CurrentPlayer.Weapons}"
+                          SelectedItem="{Binding CurrentWeapon}"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="ID"/>
+
+                <Button Grid.Row="0" Grid.Column="2"
+                        Content="Use"
+                        Click="OnClick_AttackMonster"/>
+            </Grid>
         </Grid>
 
         <Label Grid.Row="1" Grid.Column="2" Content="Location and Enemy" Background="FloralWhite"/>
@@ -230,6 +255,8 @@
                 </Grid>
             </Border>
         </Grid>
+        
+        
 
         <Label Grid.Row="2" Grid.Column="2" Content="Navigation Buttons" Background="SaddleBrown"/>
         <Grid Grid.Row="2" Grid.Column="2">
@@ -243,6 +270,32 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0"
+                  Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox Grid.Row="0" Grid.Column="0"
+                          ItemsSource="{Binding CurrentPlayer.Weapons}"
+                          SelectedItem="{Binding CurrentWeapon}"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="ID"/>
+
+                <Button Grid.Row="0" Grid.Column="2"
+                        Content="Use"
+                        Click="OnClick_AttackMonster"/>
+            </Grid>
 
             <Button Grid.Row="0" Grid.Column="1" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToNorth, Converter={StaticResource BooleanToVisibility}}" Click="OnClick_MoveNorth" Content="North"/>
             <Button Grid.Row="1" Grid.Column="2" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToEast, Converter={StaticResource BooleanToVisibility}}" Click="OnClick_MoveEast" Content="East"/>
