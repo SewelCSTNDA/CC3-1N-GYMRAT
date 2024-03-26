@@ -20,8 +20,8 @@ namespace Engine.Factories
             rewardItems.Add(new ItemQuantity(102, 1));
 
             _quests.Add(new Quest(1,
-                "Clean the Oracle's lawn",
-                "Gather sticks and stones",
+                "Pesky Slimes",
+                "Those slimes stole my sticks! Retrieve my sticks by slaying those pesky slimes and return the to me!",
                 itemsToComplete,
                 25, 10,
                 rewardItems));
