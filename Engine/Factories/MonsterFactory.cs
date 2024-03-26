@@ -17,8 +17,8 @@ namespace Engine.Factories
 
                     Monster slime = new Monster("Slime", "Slime.png", 4, 4, 1, 2, 5, 1);
 
-                    AddLootItem(slime, 101, 25);
-                    AddLootItem(slime, 102, 75);
+                    AddLootItem(slime, 101, 75);
+                    AddLootItem(slime, 102, 25);
 
                     return slime;
 
