@@ -29,7 +29,8 @@ namespace CC3_1N_GYMRAT
                 ((FrameworkElement)sender).DataContext as GroupedInventoryItem;
             if (groupedInventoryItem != null)
             {
-                Session.CurrentPlayer.Gold += groupedInventoryItem.Item.Price;
+                
+               // Session.CurrentPlayer.Gold += groupedInventoryItem.Item.Price;//
                 Session.CurrentTrader.AddItemToInventory(groupedInventoryItem.Item);
                 Session.CurrentPlayer.RemoveItemFromInventory(groupedInventoryItem.Item);
             }
@@ -42,7 +43,7 @@ namespace CC3_1N_GYMRAT
             {
                 if (Session.CurrentPlayer.Gold >= groupedInventoryItem.Item.Price)
                 {
-                    Session.CurrentPlayer.Gold -= groupedInventoryItem.Item.Price;
+                    //Session.CurrentPlayer.Gold -= groupedInventoryItem.Item.Price;//
                     Session.CurrentTrader.RemoveItemFromInventory(groupedInventoryItem.Item);
                     Session.CurrentPlayer.AddItemToInventory(groupedInventoryItem.Item);
                 }
