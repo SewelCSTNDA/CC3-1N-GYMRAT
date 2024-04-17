@@ -29,11 +29,13 @@ namespace Engine.ViewModels
             {
                 if (_currentPlayer != null)
                 {
+                    _currentPlayer.OnLeveledUp -= OnCurrentPlayerLeveledUp;
                     _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
                 }
                 _currentPlayer = value;
                 if (_currentPlayer != null)
                 {
+                    _currentPlayer.OnLeveledUp += OnCurrentPlayerLeveledUp;
                     _currentPlayer.OnKilled += OnCurrentPlayerKilled;
                 }
             }
@@ -168,7 +170,7 @@ namespace Engine.ViewModels
                         RaiseMessage("");
                         RaiseMessage($"You completed the '{quest.Name}' quest!");
 
-                        CurrentPlayer.ExperiencePoints += quest.RewardExperiencePoints;
+                        CurrentPlayer.AddExperience(quest.RewardExperiencePoints);
                         RaiseMessage($"You recieved {quest.RewardExperiencePoints}!");
 
                         CurrentPlayer.Gold += quest.RewardGold;
@@ -250,7 +252,7 @@ namespace Engine.ViewModels
                 RaiseMessage("");
                 RaiseMessage($"You have slain the {CurrentMonster.Name}");
 
-                CurrentPlayer.ExperiencePoints += CurrentMonster.RewardExperiencePoints;
+                CurrentPlayer.AddExperience(CurrentMonster.RewardExperiencePoints);
                 RaiseMessage($"You have been rewarded with {CurrentMonster.RewardExperiencePoints} experience");
 
                 CurrentPlayer.Gold += CurrentMonster.Gold;
@@ -295,6 +297,10 @@ namespace Engine.ViewModels
             RaiseMessage($"The {CurrentMonster.Name} killed you.");
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
             CurrentPlayer.CompletelyHeal();
+        }
+        private void OnCurrentPlayerLeveledUp(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage($"You are now level {CurrentPlayer.Level}!");
         }
 
         private void RaiseMessage(string message)
