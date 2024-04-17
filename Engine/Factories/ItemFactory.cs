@@ -51,6 +51,8 @@ namespace Engine.Factories
             BuildWeapon(101, "Dagger", 0, 0, 4);
             BuildWeapon(102, "Sacrificial Knife", 0, 0, 8);
 
+            BuildHealingItem(200, "Oracle's Apples", 5, 5);
+
         }
 
         public static GameItem CreateGameItem(int itemTypeId)
@@ -68,6 +70,12 @@ namespace Engine.Factories
             GameItem weapon = new GameItem(GameItem.ItemCategory.Weapon, id, name, price, true);
             weapon.Action = new AttackWithWeapon(weapon, minimumDamage, maximumDamage);
             _standardGameItems.Add(weapon);
+        }
+        private static void BuildHealingItem(int id, string name, int price, int hitPointsToHeal)
+        {
+            GameItem item = new GameItem(GameItem.ItemCategory.Consumable, id, name, price);
+            item.Action = new Heal(item, hitPointsToHeal);
+            _standardGameItems.Add(item);
         }
     }
 }

@@ -6,6 +6,7 @@
         private int _gold;
         private int _level;
         private GameItem _currentWeapon;
+        private GameItem _currentConsumable;
         public string Name
         {
             get { return _name; }
@@ -74,11 +75,34 @@
             }
         }
 
+        public GameItem CurrentConsumable
+        {
+            get => _currentConsumable;
+            set
+            {
+                if (_currentConsumable != null)
+                {
+                    _currentConsumable.Action.OnActionPerformed -= RaiseActionPerformedEvent;
+                }
+                _currentConsumable = value;
+                if (_currentConsumable != null)
+                {
+                    _currentConsumable.Action.OnActionPerformed += RaiseActionPerformedEvent;
+                }
+                OnPropertyChanged();
+            }
+        }
+
         public ObservableCollection<GameItem> Inventory { get; }
 
         public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; }
         public List<GameItem> Weapons =>
             Inventory.Where(i => i.Category == GameItem.ItemCategory.Weapon).ToList();
+
+        public List<GameItem> Consumables => Inventory.Where(i => i.Category == GameItem.ItemCategory.Consumable).ToList();
+
+        public bool HasConsumable => Consumables.Any();
+
         public bool IsDead => CurrentHitPoints <= 0;
         #endregion
 
@@ -100,6 +124,12 @@
             CurrentWeapon.PerformAction(this, target);
         }
 
+        public void UseCurrentConsumable()
+        {
+            CurrentConsumable.PerformAction(this, this);
+            RemoveItemFromInventory(CurrentConsumable);
+        }
+
         public void TakeDamage(int hitPointsOfDamage)        {            CurrentHitPoints -= hitPointsOfDamage;            if (IsDead)            {                CurrentHitPoints = 0;                RaiseOnKilledEvent();            }        }        public void Heal(int hitPointsToHeal)        {            CurrentHitPoints += hitPointsToHeal;            if (CurrentHitPoints > MaximumHitPoints)            {                CurrentHitPoints = MaximumHitPoints;            }        }        public void CompletelyHeal()        {            CurrentHitPoints = MaximumHitPoints;        }        public void ReceiveGold(int amountOfGold)        {            Gold += amountOfGold;        }        public void SpendGold(int amountOfGold)        {            if (amountOfGold > Gold)            {                throw new ArgumentOutOfRangeException($"{Name} only has {Gold} gold, and cannot spend {amountOfGold} gold");            }            Gold -= amountOfGold;        }
 
         public void AddItemToInventory(GameItem item)
@@ -117,9 +147,14 @@
                 }
                 GroupedInventory.First(gi => gi.Item.ItemTypeID == item.ItemTypeID).Quantity++;
             }
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(Weapons));
+            OnPropertyChanged(nameof(Consumables));
+            OnPropertyChanged(nameof(HasConsumable));
         }
-        public void RemoveItemFromInventory(GameItem item)		{			Inventory.Remove(item);			GroupedInventoryItem groupedInventoryItemToRemove =			item.IsUnique ? GroupedInventory.FirstOrDefault(gi => gi.Item == item) : GroupedInventory.FirstOrDefault(gi => gi.Item.ItemTypeID == item.ItemTypeID);			if( groupedInventoryItemToRemove != null )			{				if(groupedInventoryItemToRemove.Quantity == 1) 				{				GroupedInventory.Remove(groupedInventoryItemToRemove);				}				else 				{					groupedInventoryItemToRemove.Quantity--;				}			}			OnPropertyChanged(nameof(Weapons));		}
+        public void RemoveItemFromInventory(GameItem item)		{			Inventory.Remove(item);			GroupedInventoryItem groupedInventoryItemToRemove =			item.IsUnique ? GroupedInventory.FirstOrDefault(gi => gi.Item == item) : GroupedInventory.FirstOrDefault(gi => gi.Item.ItemTypeID == item.ItemTypeID);			if( groupedInventoryItemToRemove != null )			{				if(groupedInventoryItemToRemove.Quantity == 1) 				{				GroupedInventory.Remove(groupedInventoryItemToRemove);				}				else 				{					groupedInventoryItemToRemove.Quantity--;				}			}            OnPropertyChanged(nameof(Weapons));
+            OnPropertyChanged(nameof(Consumables));
+            OnPropertyChanged(nameof(HasConsumable));
+        }
 
 		#region Private functions		private void RaiseOnKilledEvent()
 		{
