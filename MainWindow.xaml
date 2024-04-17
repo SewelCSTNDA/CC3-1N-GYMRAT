@@ -50,7 +50,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>  
 
 
                 </Grid.RowDefinitions>
@@ -85,7 +85,7 @@
             <!-- Inventory and Quest -->
             <TabControl>
                 <TabItem Header="Inventory">
-                    <DataGrid ItemsSource="{Binding CurrentPlayer.Inventory}"
+                    <DataGrid ItemsSource="{Binding CurrentPlayer.GroupedInventory}"
                               AutoGenerateColumns="False"
                               HeadersVisibility="Column">
                         <DataGrid.Columns>
@@ -110,6 +110,10 @@
                             <DataGridTextColumn Header="Done?"
                                                 Binding="{Binding IsCompleted}"
                                                 Width="Auto"/>
+							<DataGridTextColumn Header="Qty"
+												IsReadOnly="True"
+												Width="Auto"
+												Binding="{Binding Quantity}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
