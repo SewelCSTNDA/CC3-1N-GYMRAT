@@ -15,7 +15,10 @@ namespace Engine.Factories
             {
                 case 1:
 
-                    Monster slime = new Monster("Slime", "Slime.png", 4, 4, 1, 2, 5, 1);
+                    Monster slime = new Monster("Slime", "Slime.png", 4, 4, 5, 10);
+
+                    slime.CurrentWeapon = ItemFactory.CreateGameItem(100);
+
                     AddLootItem(slime, 008, 100);
                     AddLootItem(slime, 006, 25);
                     AddLootItem(slime, 007, 25);
@@ -24,34 +27,52 @@ namespace Engine.Factories
                     return slime;
 
                 case 2:
-                    Monster cslime = new Monster("Crystal Slime", "Crystal Slime.png", 5, 5, 2, 3, 5, 1);
+                    Monster cslime = new Monster("Crystal Slime", "Crystal Slime.png", 5, 5, 5, 1);
+
+                    cslime.CurrentWeapon = ItemFactory.CreateGameItem(100);
+
                     AddLootItem(cslime, 028, 5);
                     AddLootItem(cslime, 021, 95);
                     return cslime;   
                     
                 case 3:
-                    Monster goblin = new Monster("Goblin", "Orc.png", 10, 10, 4, 5, 10, 3);
+                    Monster goblin = new Monster("Goblin", "Orc.png", 10, 10, 10, 3);
+
+                    goblin.CurrentWeapon = ItemFactory.CreateGameItem(101);
+
                     AddLootItem(goblin, 027, 100);
                     return goblin;
 
                 case 4:
-                    Monster gromble = new Monster("Gromble", "Gromble.png", 550, 500, 70, 90, 200, 20);
+                    Monster gromble = new Monster("Gromble", "Gromble.png", 550, 500, 200, 20);
+
+                    gromble.CurrentWeapon = ItemFactory.CreateGameItem(102);
+
                     AddLootItem(gromble, 023, 100);
                     return gromble;
 
                 case 5:
-                    Monster vixen = new Monster("Vixen", "Vixen.png", 400, 369, 30, 35, 50, 5);
+                    Monster vixen = new Monster("Vixen", "Vixen.png", 400, 369, 50, 5);
+
+                    vixen.CurrentWeapon = ItemFactory.CreateGameItem(102);
+
                     AddLootItem(vixen, 022, 95);
                     AddLootItem(vixen, 026, 5);
                     return vixen;
 
                 case 6:
-                    Monster solin = new Monster("Solin", "Solin.png", 1500, 1500, 120, 170, 750, 70);
+                    Monster solin = new Monster("Solin", "Solin.png", 1500, 1500, 750, 70);
+
+                    solin.CurrentWeapon = ItemFactory.CreateGameItem(102);
+
                     AddLootItem(solin, 024, 100);
                     return solin;
 
                 case 7:
-                    Monster aaron = new Monster("Aaron", "Aaron.png", 3000, 2900, 200, 300, 1250, 150);
+                    Monster aaron = new Monster("Aaron", "Aaron.png", 3000, 2900, 1250, 150);
+
+                    aaron.CurrentWeapon = ItemFactory.CreateGameItem(102);
+
                     AddLootItem(aaron, 024, 100);
                     return aaron;
 

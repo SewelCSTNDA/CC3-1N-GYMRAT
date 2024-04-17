@@ -14,7 +14,7 @@ namespace Engine.Factories
 
         static ItemFactory()
         {
-            BuildWeapon(001, "Fledgling Sword", 5, 15, 20);
+            BuildWeapon(001, "Fledgling Sword", 5, 2, 5);
             BuildWeapon(002, "Novice Longsword", 40, 60, 75);
             BuildWeapon(003, "Veteran Claymore", 100, 230, 250);
             BuildWeapon(004, "Novice Bow", 25, 60, 80);
@@ -46,6 +46,10 @@ namespace Engine.Factories
             BuildMiscellaneousItem(028, "Crystal Shards", 2);
             //meron na 29 nasa line 25
             //meron na 30 nasa line 26
+
+            BuildWeapon(100, "Whip", 0, 0, 2);
+            BuildWeapon(101, "Dagger", 0, 0, 4);
+            BuildWeapon(102, "Sacrificial Knife", 0, 0, 8);
 
         }
 

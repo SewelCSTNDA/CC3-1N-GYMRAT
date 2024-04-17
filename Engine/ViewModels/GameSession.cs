@@ -1,4 +1,5 @@
-﻿using Engine.EventArgs;
+﻿using Engine.Actions;
+using Engine.EventArgs;
 using Engine.Factories;
 using Engine.Models;
 using System;
@@ -68,16 +69,25 @@ namespace Engine.ViewModels
             get { return _currentMonster; }
             set
             {
+                if (_currentMonster != null)
+                {
+                    _currentMonster.OnActionPerformed -= OnCurrentMonsterPerformedAction;
+                    _currentMonster.OnKilled -= OnCurrentMonsterKilled;
+                }
                 _currentMonster = value;
 
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(HasMonster));
 
-                if (CurrentMonster != null)
+                if (_currentMonster != null)
                 {
+                    _currentMonster.OnActionPerformed += OnCurrentMonsterPerformedAction;
+                    _currentMonster.OnKilled += OnCurrentMonsterKilled;
+
                     RaiseMessage("");
                     RaiseMessage($"You see a {CurrentMonster.Name} here!");
                 }
+
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HasMonster));
             }
         }
 
@@ -245,20 +255,16 @@ namespace Engine.ViewModels
             }
             else
             {
-                int damageToPlayer = RandomNumberGenerator.NumberBetween(CurrentMonster.MinimumDamage, CurrentMonster.MaximumDamage);
-                if (damageToPlayer == 0)
-                {
-                    RaiseMessage($"The {CurrentMonster.Name} attacks, but misses you!");
-                }
-                else
-                {
-                    RaiseMessage($"the {CurrentMonster.Name} hit you for {damageToPlayer} points!");
-                    CurrentPlayer.TakeDamage(damageToPlayer);
-                }
+                CurrentMonster.UseCurrentWeaponOn(CurrentPlayer);
             }
         }
 
         private void OnCurrentPlayerPerformedAction(object sender, string result)
+        {
+            RaiseMessage(result);
+        }
+
+        private void OnCurrentMonsterPerformedAction(object sender, string result)
         {
             RaiseMessage(result);
         }
