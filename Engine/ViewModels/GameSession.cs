@@ -17,11 +17,27 @@ namespace Engine.ViewModels
 
         #region Properties
 
+        private Player _currentPlayer;
         private Location _currentLocation;
         private Monster _currentMonster;
         private Trader _currentTrader;
         public World CurrentWorld { get; set; }
-        public Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer
+        {
+            get { return _currentPlayer; }
+            set
+            {
+                if (_currentPlayer != null)
+                {
+                    _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
+                }
+                _currentPlayer = value;
+                if (_currentPlayer != null)
+                {
+                    _currentPlayer.OnKilled += OnCurrentPlayerKilled;
+                }
+            }
+        }
         public Location CurrentLocation 
         {
             get { return _currentLocation; }
@@ -90,26 +106,13 @@ namespace Engine.ViewModels
 
         public GameSession()
         {
-            CurrentPlayer = new Player
-            { 
-                Name = "Nymph", 
-                CharacterClass = "Dryad", 
-                ExperiencePoints = 0, 
-                Gold = 0, 
-                CurrentHitPoints = 200,
-                MaximumHitPoints = 200,
-                Level = 1 
-            };
-
+            CurrentPlayer = new Player("Noel", "PowerLifter", 0, 10, 10, 0);
             if (!CurrentPlayer.Weapons.Any())
             {
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(001));
             }
-
             CurrentWorld = WorldFactory.CreateWorld();
-
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
-
         }
 
 
@@ -284,6 +287,14 @@ namespace Engine.ViewModels
                     CurrentPlayer.CurrentHitPoints = CurrentPlayer.Level * 10;
                 }
             }
+        }
+
+        private void OnCurrentPlayerKilled(object sender, System.EventArgs eventArgs)
+        {
+            RaiseMessage("");
+            RaiseMessage($"The {CurrentMonster.Name} killed you.");
+            CurrentLocation = CurrentWorld.LocationAt(0, -1);
+            CurrentPlayer.CompletelyHeal();
         }
 
         private void RaiseMessage(string message)
