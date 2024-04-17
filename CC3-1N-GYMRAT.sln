@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CC3-1N-GYMRAT", "CC3-1N-GYM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csproj", "{2E555950-C038-499A-A670-7CF4EADFB478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "..\TestEngine\TestEngine.csproj", "{F844C0CB-27A5-403D-8504-A76D4257116A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2E555950-C038-499A-A670-7CF4EADFB478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E555950-C038-499A-A670-7CF4EADFB478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E555950-C038-499A-A670-7CF4EADFB478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F844C0CB-27A5-403D-8504-A76D4257116A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F844C0CB-27A5-403D-8504-A76D4257116A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F844C0CB-27A5-403D-8504-A76D4257116A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F844C0CB-27A5-403D-8504-A76D4257116A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
