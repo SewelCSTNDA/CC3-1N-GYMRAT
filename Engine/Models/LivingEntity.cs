@@ -1,13 +1,13 @@
 ﻿using System;using System.Collections.Generic;using System.Collections.ObjectModel;using System.Linq;using System.Text;using System.Threading.Tasks;namespace Engine.Models{	public abstract class LivingEntity : BaseNotificationClass	{
-        #region Properties        private string _name;		private int _currentHitPoints;		private int _maximumHitPoints;		private int _gold;		private int _level;		public string Name		{			get { return _name; }			set			{				_name = value;				OnPropertyChanged(nameof(Name));			}		}		public int CurrentHitPoints		{			get { return _currentHitPoints; }			set			{				_currentHitPoints = value;				OnPropertyChanged(nameof(CurrentHitPoints));			}		}		public int MaximumHitPoints		{			get { return _maximumHitPoints; }			set			{				_maximumHitPoints = value;				OnPropertyChanged(nameof(MaximumHitPoints));			}		}		public int Gold		{			get { return _gold; }			set			{				_gold = value;				OnPropertyChanged(nameof(Gold));			}		}		public int Level
+        #region Properties        private string _name;		private int _currentHitPoints;		private int _maximumHitPoints;		private int _gold;		private int _level;		public string Name		{			get { return _name; }			set			{				_name = value;				OnPropertyChanged();			}		}		public int CurrentHitPoints		{			get { return _currentHitPoints; }			set			{				_currentHitPoints = value;				OnPropertyChanged();			}		}		public int MaximumHitPoints		{			get { return _maximumHitPoints; }			set			{				_maximumHitPoints = value;				OnPropertyChanged();			}		}		public int Gold		{			get { return _gold; }			set			{				_gold = value;				OnPropertyChanged();			}		}		public int Level
 		{
 			get { return _level; }
 			protected set
 			{
 				_level = value;
-				OnPropertyChanged(nameof(Level));
+				OnPropertyChanged();
 			}
-		}		public ObservableCollection<GameItem> Inventory { get; set; }		public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; set; }		public List<GameItem> Weapons =>			Inventory.Where(i => i is Weapon).ToList();
+		}		public ObservableCollection<GameItem> Inventory { get; }		public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; }		public List<GameItem> Weapons =>			Inventory.Where(i => i is Weapon).ToList();
         public bool IsDead => CurrentHitPoints <= 0;
 		#endregion
         public event EventHandler OnKilled;
@@ -39,9 +39,9 @@
                 }
                 GroupedInventory.First(gi => gi.Item.ItemTypeID == item.ItemTypeID).Quantity++;
             }
-            OnPropertyChanged(nameof(Weapons));
+            OnPropertyChanged();
         }
-        public void RemoveItemFromInventory(GameItem item)		{			Inventory.Remove(item);			GroupedInventoryItem groupedInventoryItemToRemove =			item.IsUnique ? GroupedInventory.FirstOrDefault(gi => gi.Item == item) : GroupedInventory.FirstOrDefault(gi => gi.Item.ItemTypeID == item.ItemTypeID);			if( groupedInventoryItemToRemove != null )			{				if(groupedInventoryItemToRemove.Quantity == 1) 				{				GroupedInventory.Remove(groupedInventoryItemToRemove);				}				else 				{					groupedInventoryItemToRemove.Quantity--;				}			}			OnPropertyChanged(nameof(Weapons));		}
+        public void RemoveItemFromInventory(GameItem item)		{			Inventory.Remove(item);			GroupedInventoryItem groupedInventoryItemToRemove =			item.IsUnique ? GroupedInventory.FirstOrDefault(gi => gi.Item == item) : GroupedInventory.FirstOrDefault(gi => gi.Item.ItemTypeID == item.ItemTypeID);			if( groupedInventoryItemToRemove != null )			{				if(groupedInventoryItemToRemove.Quantity == 1) 				{				GroupedInventory.Remove(groupedInventoryItemToRemove);				}				else 				{					groupedInventoryItemToRemove.Quantity--;				}			}			OnPropertyChanged();		}
 
 		#region Private functions		private void RaiseOnKilledEvent()
 		{

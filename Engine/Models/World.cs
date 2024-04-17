@@ -11,16 +11,11 @@ namespace Engine.Models
     public class World
     {
         private List<Location> _locations = new List<Location>();
-        internal void AddLocation(int x, int y, string name, string desc, string imageName)
+        internal void AddLocation(int xCoordinate, int yCoordinate,
+                                  string name, string description, string imageName)
         {
-            Location loc = new Location();
-            loc.XCoordinate = x;
-            loc.YCoordinate = y;
-            loc.Name = name;
-            loc.Description = desc;
-            loc.ImageName = $"/Engine;component/Images/Locations/{imageName}";
-
-            _locations.Add(loc);
+            _locations.Add(new Location(xCoordinate, yCoordinate, name, description,
+                                        $"/Engine;component/Images/Locations/{imageName}"));
         }
 
         public Location LocationAt(int x, int y)
