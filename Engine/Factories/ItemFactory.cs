@@ -53,6 +53,10 @@ namespace Engine.Factories
 
             BuildHealingItem(200, "Oracle's Apples", 5, 5);
 
+            BuildMiscellaneousItem(31, "Apple", 1);
+            BuildMiscellaneousItem(32, "Liquidized Sugar", 5);
+            BuildMiscellaneousItem(33, "Chilling Essence", 10);
+
         }
 
         public static GameItem CreateGameItem(int itemTypeId)
